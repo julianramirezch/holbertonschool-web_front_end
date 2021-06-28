@@ -1,27 +1,24 @@
-// Prime numbers & timing execution
 function countPrimeNumbers() {
   let count = 0;
+  let prime;
   for (let i = 2; i <= 100; i++) {
-    let isprime = false;
-    for (let j = 2; j <= i; j++) {
+    prime = true;
+    for (let j = 2; j < i; j++) {
       if (i % j == 0) {
-        isprime = false;
+        prime = false;
         break;
       }
     }
-
-    if (isprime) {
-      ++count;
+    if (prime) {
+      count += 1;
     }
   }
-
   return count;
 }
 
-
-let start = performance.now();
+const t0 = performance.now();
 countPrimeNumbers();
-let end = performance.now();
-
-let final = end - start;
-console.log(`Execution time of printing countPrimeNumbers was ${final} milliseconds.`);
+const t1 = performance.now();
+console.log(
+  `Execution time of printing countPrimeNumbers was ${t1 - t0} milliseconds.`
+);

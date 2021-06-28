@@ -1,4 +1,3 @@
-// Private methods with closure
 function studentHogwarts() {
   let privateScore = 0;
   let name = null;
@@ -8,26 +7,25 @@ function studentHogwarts() {
   }
 
   return {
-    setName: (newName) => {
+    setName: function (newName) {
       name = newName;
     },
 
-    rewardStudent: () => {
+    rewardStudent: function () {
       changeScoreBy(1);
     },
 
-    penalizeStudent: () => {
+    penalizeStudent: function () {
       changeScoreBy(-1);
     },
 
-    getScore: () => {
-      score = `${name}: ${privateScore}`;
-      return score;
-    }
-  }
+    getScore: function () {
+      return `${name}: ${privateScore}`;
+    },
+  };
 }
 
-let harry = studentHogwarts();
+const harry = new studentHogwarts();
 harry.setName("Harry");
 harry.rewardStudent();
 harry.rewardStudent();
@@ -35,7 +33,7 @@ harry.rewardStudent();
 harry.rewardStudent();
 console.log(harry.getScore());
 
-let draco = studentHogwarts();
+const draco = new studentHogwarts();
 draco.setName("Draco");
 draco.rewardStudent();
 draco.penalizeStudent();

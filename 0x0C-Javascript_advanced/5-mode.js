@@ -1,45 +1,40 @@
-// Private methods with closure
 function changeMode(size, weight, transform, background, color) {
-  return () => {
-    document.body.style.fontSize = size + 'px';
-    document.body.style.fontWeight = weight;
-    document.body.style.textTransform = transform;
-    document.body.style.backgroundColor = background;
-    document.body.style.color = color;
+  return function () {
+    const body = document.querySelector("body");
+    body.style.fontSize = size;
+    body.style.fontWeight = weight;
+    body.style.textTransform = transform;
+    body.style.backgroundColor = background;
+    body.style.color = color;
   };
 }
 
 function main() {
+  const spooky = changeMode(9, "bold", "uppercase", "pink", "green");
+  const darkMode = changeMode(12, "bold", "capitalize", "black", "white");
+  const screamMode = changeMode(12, "normal", "lowercase", "white", "black");
 
-  let spooky = changeMode(9, 'bold', 'uppercase', 'pink', 'green');
-  let darkMode = changeMode(12, 'bold', 'capitalize', 'black', 'white');
-  let screamMode = changeMode(12, 'normal', 'lowercase', 'white', 'black');
+  //   DOM
+  const body = document.querySelector("body");
 
-  // Make paragraph with text
-  let paragraph = document.createElement('p');
-  let txt = document.createTextNode('Welcome Holberton!');
-  paragraph.appendChild(txt);
-  document.body.appendChild(paragraph);
+  const p = document.createElement("P");
+  p.innerText = "Welcome Holberton!";
+  body.appendChild(p);
 
-  // First btn
-  let btn = document.createElement('button');
-  btn.innerHTML = 'Spooky';
-  btn.addEventListener('click', spooky);
-  document.body.appendChild(btn);
+  const buttonSpooky = document.createElement("BUTTON");
+  buttonSpooky.innerText = "Spooky";
+  const buttonDark = document.createElement("BUTTON");
+  buttonDark.innerText = "Dark mode";
+  const buttonScream = document.createElement("BUTTON");
+  buttonScream.innerText = "Scream mode";
 
-  // Second btn
-  btn = document.createElement('button');
-  btn.innerHTML = 'Dark mode';
-  btn.addEventListener('click', darkMode);
-  document.body.appendChild(btn);
+  body.appendChild(buttonSpooky);
+  body.appendChild(buttonDark);
+  body.appendChild(buttonScream);
 
-  // Third btn
-  btn = document.createElement('button');
-  btn.innerHTML = 'Scream mode';
-  btn.addEventListener('click', screamMode);
-  document.body.appendChild(btn);
+  buttonSpooky.onclick = spooky;
+  buttonDark.onclick = darkMode;
+  buttonScream.onclick = screamMode;
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  main();
-})
+main();

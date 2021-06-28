@@ -1,1 +1,1 @@
-# 0x0C. JavaScript advanced
+# 0x0C. Javascript advanced

@@ -1,14 +1,12 @@
-// Closure and loops
 function createClassRoom(numbersOfStudents) {
-
   function studentSeat(seat) {
-    return function() {
+    return function () {
       return seat;
     };
   }
 
-  students = [];
-  for (i = 0; i < numbersOfStudents; ++i) {
+  let students = new Array();
+  for (let i = 0; i < numbersOfStudents; i++) {
     students.push(studentSeat(i + 1));
   }
 

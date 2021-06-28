@@ -1,8 +1,7 @@
-// Closure
 function welcomeMessage(fullName) {
-  return () => {
-    alert("Welcome " + fullName);
-  }
+  return function closure(fullname) {
+    alert(`Welcome ${fullName}`);
+  };
 }
 
 const guillaume = welcomeMessage("Guillaume");
